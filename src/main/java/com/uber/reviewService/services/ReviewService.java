@@ -19,8 +19,8 @@ public class ReviewService implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Review review = Review
                             .builder()
-                            .content("Driver behaviour was good")
-                            .rating(4.8)
+                            .content("from mumbai to lucknow")
+                            .rating(5.0)
                             .build();
 
         reviewRepository.save(review);
