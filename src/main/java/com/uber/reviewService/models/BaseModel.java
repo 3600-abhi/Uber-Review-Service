@@ -20,12 +20,15 @@ public abstract class BaseModel {  // class is abstract to restrict its object c
     protected Long id;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP) // this annotation tells spring about format of Date stored ie, Date, Time Or Timestamp
+    // by default java Date (private Date createdAt) will also mapped to timestamp
     @CreatedDate // this annotation tell spring to only handle it for object creation
     protected Date createdAt;
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP) // this annotation tells spring about format of Date stored ie, Date, Time Or Timestamp
+    // by default java Date (private Date updatedAt) will also mapped to timestamp
+
     @LastModifiedDate // this annotation tell spring to only handle it for object updation
     protected Date updatedAt;
 }
