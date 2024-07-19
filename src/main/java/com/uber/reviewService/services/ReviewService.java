@@ -46,13 +46,6 @@ public class ReviewService implements CommandLineRunner {
 //
 //        bookingRepository.save(booking);
 
-        Optional<Driver> driver = driverRepository.findById(1L);
-
-        if(driver.isPresent()) {
-            System.out.println(driver.get().getBookings().get(0).getDriver().getName());
-        }
-        else {
-            System.out.println("no record found");
-        }
+        Optional<Driver> driver = driverRepository.rawFindByIdAndLicenseNumber(1L, "BGJDM4265T");
     }
 }
