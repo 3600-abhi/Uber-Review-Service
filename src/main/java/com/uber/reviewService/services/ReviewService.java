@@ -8,6 +8,7 @@ import com.uber.reviewService.models.Review;
 import com.uber.reviewService.repositories.BookingRepository;
 import com.uber.reviewService.repositories.DriverRepository;
 import com.uber.reviewService.repositories.ReviewRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ public class ReviewService implements CommandLineRunner {
 
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 
 //        Review review = Review
@@ -46,6 +48,18 @@ public class ReviewService implements CommandLineRunner {
 //
 //        bookingRepository.save(booking);
 
-        Optional<Driver> driver = driverRepository.rawFindByIdAndLicenseNumber(1L, "BGJDM4265T");
+        List<Long> driverIds = List.of(1L, 2L, 3L, 4L, 5L);
+
+
+        List<Driver> driverList = driverRepository.findAllById(driverIds);
+
+        for(Driver driver : driverList) {
+            List<Booking> bookingList = driver.getBookings();
+
+            System.out.println("bookingSize = " + driver.getBookings().size());
+        }
+
+        System.out.println("driverName = " + driverList.get(0).getBookings().get(0).getDriver().getName());
+
     }
 }
