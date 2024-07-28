@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,9 +14,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Booking extends BaseModel {
-
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) // we have defined one to one relationship between booking review
-    private Review review;
 
     // default it takes as tinyint because it automatically detects that BookingStatus is an enum
     @Enumerated(value = EnumType.STRING) // default enum mapping will be Oridnal ie numeric index

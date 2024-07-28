@@ -18,4 +18,9 @@ public class Review extends BaseModel {
     private String content;
 
     private Double rating;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // we have defined one to one relationship between booking review
+    @JoinColumn(nullable = false)
+    private Booking booking;
+
 }
